@@ -17,7 +17,7 @@
   "elasticsearch": {
     "host": "172.19.0.27",
     "port": 9200,
-    "index": "test",
+    "index": "test2",
     "type": "iftop"
   }
 }

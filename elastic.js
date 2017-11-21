@@ -27,9 +27,6 @@ exports.Elastic = class {
             });
             res.on('data', (chunk) => {
                 console.log('Elasticsearch saved iftop : ' + this.data.file.getFilename());
-                // TODO : replace code from here with an event so it's handled by file class.
-                if(!config.data.keep)
-                    this.data.file.remove();
             });
         });
     }

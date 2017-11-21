@@ -13,10 +13,6 @@ exports.Iftop = class {
         this.execute.on('close', this.close);
     }
 
-    model() {
-
-    }
-
     intern() {
 
     }
@@ -27,7 +23,9 @@ exports.Iftop = class {
             console.error('iftop has stopped unexpectidly on code : ' + code);
             process.exit(code);
         }
+
         console.log(this.file.getConnections());
+        process.exit(0);
 
         // Send to Elastic search
         const elastic = new Elastic(this);

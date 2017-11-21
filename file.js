@@ -23,7 +23,7 @@ exports.File = class {
         this.checkFile();
     }
 
-    getConnections() {
+    getContent() {
         let json;
         let results = { connections: [] };
 

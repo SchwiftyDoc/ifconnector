@@ -9,22 +9,22 @@ exports.Iftop = class {
     constructor() {
         this.connections = [];
         this.datafile = new Datafile();
-        this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.file.file)
-        this.execute.on('close', this.close);
+        this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.datafile.filevim)
+        this.execute.on('close', this.close(code, this.datafile));
     }
 
     intern() {
 
     }
 
-    close(code) {
+    close(code, file) {
 
         if(code != 0) {
             console.error('iftop has stopped unexpectidly on code : ' + code);
             process.exit(code);
         }
 
-        console.log(this.datafile.getConnections());
+        console.log(file.getConnections());
         process.exit(0);
 
         // Send to Elastic search

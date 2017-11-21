@@ -31,6 +31,7 @@ exports.Datafile = class {
             if (err)
                 console.error('Unable to read file where data were saved : ' + this.file);
 
+            console.log('test');
             const strr = data.toString().split('\n');
             for (let u = 3; u < 23; u += 2) {
                 let str1 = strr[u].trim();

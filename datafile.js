@@ -28,8 +28,8 @@ exports.Datafile = class {
         let results = { connections: [] };
 
         console.log(this.file);
-        process.exit(0);
-        fs.readFileSync(this.file, (err, data) => {
+        //process.exit(0);
+        fs.readFileSync('/tmp/100421_100431.txt', (err, data) => {
             if (err)
                 console.error('Unable to read file where data were saved : ' + this.file);
 

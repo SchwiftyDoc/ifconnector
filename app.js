@@ -1,7 +1,6 @@
 // Imports
 const config = require('./config.json');
 const fs = require('fs');
-const { Elastic } = require('./elastic');
 const { Iftop } = require('./iftop');
 
 // Define main fonction to do in interval.

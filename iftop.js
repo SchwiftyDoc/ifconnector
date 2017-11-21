@@ -13,7 +13,8 @@ exports.Iftop = class {
         this.execute.on('close', (code) => {
             if (code != 0)
                 console.error("Iftop: Error occured.");
-            console.log(this.datafile.getConnections());
+            const elastic = new Elastic(this.datafile.getConnections()).send();
+            console.log('Elasticsearch saved : ' + this.datafile.file);
         });
     }
 

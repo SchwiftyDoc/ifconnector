@@ -27,9 +27,7 @@ exports.Datafile = class {
         let json;
         let results = { connections: [] };
 
-        console.log(this.file);
-        //process.exit(0);
-        fs.readFile('/tmp/100421_100431.txt', (err, data) => {
+        fs.readFileSync(this.file, 'utf-8', (err, data) => {
             if (err)
                 console.error('Unable to read file where data were saved : ' + this.file);
 

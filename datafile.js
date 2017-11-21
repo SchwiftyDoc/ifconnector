@@ -19,6 +19,44 @@ class Datafile {
         this.checkFile();
     }
 
+    getConnections() {
+        let json;
+        let results = { connections: [] };
+
+        let data = fs.readFileSync(this.file, 'utf-8');
+        /*console.log(data);
+        process.exit(0);*/
+        const strr = data.toString().split('\n');
+        for (let u = 3; u < 23; u += 2) {
+            let str1 = strr[u].trim();
+            str1 = str1.replace(/\s\s+/g, ' ');
+            str1 = str1.split(' ');
+            let str2 = strr[u+1].trim();
+            str2 = str2.replace(/\s\s+/g, ' ');
+            str2 = str2.split(' ');
+
+            json = {
+                'source': str1[1],
+                'destination': str2[0],
+                'bandwidth': str1[5],
+                'from': start.toISOString(),
+                'to': end.toISOString()
+            };
+            results.connections.push(json);
+
+            json = {
+                'source': str2[0],
+                'destination': str1[1],
+                'bandwidth': str2[4],
+                'from': start.toISOString(),
+                'to': end.toISOString()
+            };
+            results.connections.push(json);
+        }
+        const el = new Elastic(JSON.stringify(results)).send();
+
+    }
+
     remove() {
 
     }

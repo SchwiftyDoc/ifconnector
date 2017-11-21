@@ -7,7 +7,7 @@ exports.Datafile = class {
     constructor() {
         // Set date variables
         this.start = new Date();
-        this.end = new Date(this.start.getTime() + (1000 * config.data.duration));
+        this.end = new Date(this.start.getTime() + (1000 * config.iftop.duration));
 
         // Set and check path
         if (config.data.keep) {

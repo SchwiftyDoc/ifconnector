@@ -40,7 +40,7 @@ function received(data) {
     let json;
     let results = { connections: [] };
 
-    fs.readFileSync(this.file, 'utf-8', (err, data) => {
+    fs.readFile(this.file, (err, data) => {
         if (err)
             console.error('Unable to read file where data were saved : ' + this.file);
 

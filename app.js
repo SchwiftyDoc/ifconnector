@@ -17,7 +17,7 @@ if(![2, 10, 40].includes(config.iftop.duration)) {
     process.exit(2);
 }
 
-// Set Poller on
+/* Set Poller on
 poller('/tmp/ifconnector', (err, poll) => {
     if (err) {
         console.log('Cannot poll the directory : /tmp/ifconnector');
@@ -76,6 +76,6 @@ function received(data) {
         const el = new Elastic(JSON.stringify(results)).send();
     });
 
-}
+}*/
 
 setInterval(fct, config.iftop.duration * 1000);

@@ -18,6 +18,9 @@ exports.Iftop = class {
             console.error("Iftop: Error occured.");
 
         this.datafile.getConnections();
+
+        if (!config.data.keep)
+            this.datafile.remove();
     }
 
 };

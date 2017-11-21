@@ -2,7 +2,7 @@
 const config = require('./config.json');
 const fs = require('fs');
 
-exports.Datafile = class {
+class Datafile {
 
     constructor() {
         // Set date variables
@@ -98,3 +98,5 @@ exports.Datafile = class {
     }
 
 };
+
+exports.Datafile = Datafile;

@@ -16,11 +16,11 @@ exports.Iftop = class {
                 process.exit(code);
             }
 
-            console.log(this.datafile.getConnections());
-            process.exit(0);
+            this.datafile.getConnections();
+            //process.exit(0);
 
             // Send to Elastic search
-            const elastic = new Elastic(this);
+            //const elastic = new Elastic(this);
 
             // Delete raw data?
             if (!config.data.keep)

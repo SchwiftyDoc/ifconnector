@@ -10,17 +10,15 @@ exports.Iftop = class {
         this.connections = [];
         this.datafile = new Datafile();
         this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.datafile.file);
-        this.execute.on('close', this.close);
-    }
+        this.execute.on('close', (code) => {
+            if (code != 0)
+                console.error("Iftop: Error occured.");
 
-    close(code) {
-        if (code != 0)
-            console.error("Iftop: Error occured.");
+            this.datafile.getConnections();
 
-        this.datafile.getConnections();
-
-        if (!config.data.keep)
-            this.datafile.remove();
+            if (!config.data.keep)
+                this.datafile.remove();
+        });
     }
 
 };

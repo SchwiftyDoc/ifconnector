@@ -39,8 +39,8 @@ class Datafile {
                 'source': str1[1],
                 'destination': str2[0],
                 'bandwidth': str1[5],
-                'from': start.toISOString(),
-                'to': end.toISOString()
+                'from': this.start.toISOString(),
+                'to': this.end.toISOString()
             };
             results.connections.push(json);
 
@@ -48,13 +48,13 @@ class Datafile {
                 'source': str2[0],
                 'destination': str1[1],
                 'bandwidth': str2[4],
-                'from': start.toISOString(),
-                'to': end.toISOString()
+                'from': this.start.toISOString(),
+                'to': this.end.toISOString()
             };
             results.connections.push(json);
         }
-        const el = new Elastic(JSON.stringify(results)).send();
-
+        console.log(results);
+        //const el = new Elastic(JSON.stringify(results)).send();
     }
 
     remove() {

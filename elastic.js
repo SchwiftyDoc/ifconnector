@@ -34,7 +34,7 @@ exports.Elastic = class {
         });
     }
 
-    send(data) {
+    send() {
         this.req.write(this.data);
         this.req.end();
     }

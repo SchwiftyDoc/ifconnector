@@ -10,58 +10,13 @@ class Datafile {
         this.end = new Date(this.start.getTime() + (1000 * config.iftop.duration));
 
         // Set and check path
-        if (config.data.keep) {
-            this.path = this.getPathname();
-            this.checkPath();
-        } else {
-            this.path = '/tmp';
-        }
+        this.path = this.getPathname();
+        this.checkPath();
 
         // Set and check file
         this.file = this.path + '/' + this.getFilename();
         this.file += (config.data.ext.length > 0) ? '.' + config.data.ext : '';
         this.checkFile();
-    }
-
-    getConnections() {
-        let json;
-        let results = { connections: [] };
-
-        fs.readFileSync(this.file, 'utf-8', (err, data) => {
-            if (err)
-                console.error('Unable to read file where data were saved : ' + this.file);
-
-            console.log('test');
-            const strr = data.toString().split('\n');
-            for (let u = 3; u < 23; u += 2) {
-                let str1 = strr[u].trim();
-                str1 = str1.replace(/\s\s+/g, ' ');
-                str1 = str1.split(' ');
-                let str2 = strr[u+1].trim();
-                str2 = str2.replace(/\s\s+/g, ' ');
-                str2 = str2.split(' ');
-
-                json = {
-                    'source': str1[1],
-                    'destination': str2[0],
-                    'bandwidth': str1[5],
-                    'from': start.toISOString(),
-                    'to': end.toISOString()
-                };
-                results.connections.push(json);
-
-                json = {
-                    'source': str2[0],
-                    'destination': str1[1],
-                    'bandwidth': str2[4],
-                    'from': start.toISOString(),
-                    'to': end.toISOString()
-                };
-                results.connections.push(json);
-            }
-        });
-
-        return results;
     }
 
     remove() {
@@ -70,7 +25,7 @@ class Datafile {
 
     getPathname() {
         return (config.data.keep) ? config.data.path + '/' + this.start.getFullYear() + '-'
-            + (this.start.getMonth() + 1) + '-' + this.start.getDate() : '/tmp';
+            + (this.start.getMonth() + 1) + '-' + this.start.getDate() : '/tmp/ifconnector';
     }
 
     getFilename() {
@@ -80,6 +35,7 @@ class Datafile {
 
     checkPath() {
         if(!fs.existsSync(this.path)) {
+            fs.mkdir(this.path);
             console.log('The path for the data has been created: ' + this.path);
         }
     }

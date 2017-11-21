@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/SchwiftyDoc/ifconnector#readme",
   "dependencies": {
+    "poller": "0.0.5",
     "range_check": "^1.4.0"
   }
 }

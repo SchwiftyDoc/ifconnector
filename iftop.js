@@ -16,6 +16,7 @@ exports.Iftop = class {
             let elastic;
             const data = this.datafile.getConnections();
             data.connections.forEach((conn) => {
+                console.log(JSON.stringify(conn));
                 elastic = new Elastic(JSON.stringify(conn));
             });
             console.log('Elasticsearch saved : ' + this.datafile.file);

@@ -1,0 +1,26 @@
+{
+  "name": "ifconnector",
+  "version": "1.0.0",
+  "description": "Iftop to Elasticsearch",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SchwiftyDoc/ifconnector.git"
+  },
+  "keywords": [
+    "iftop",
+    "elasticsearch"
+  ],
+  "author": "Corentin Dekimpe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SchwiftyDoc/ifconnector/issues"
+  },
+  "homepage": "https://github.com/SchwiftyDoc/ifconnector#readme",
+  "dependencies": {
+    "range_check": "^1.4.0"
+  }
+}

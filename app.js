@@ -9,6 +9,7 @@ const { Iftop } = require('./iftop');
 poller('/tmp/ifconnector', (err, poll) => {
     if (err) {
         console.log('Cannot poll the directory : /tmp/ifconnector');
+        console.error(err);
         process.exit(1);
     }
     poll.on('add', (filepath) => {

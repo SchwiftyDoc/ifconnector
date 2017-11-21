@@ -9,7 +9,7 @@ exports.Iftop = class {
     constructor() {
         this.connections = [];
         this.file = new File(config.data.keep);
-        this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s 40 > ' + this.file.file)
+        this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.file.file)
         this.execute.on('close', this.close);
     }
 

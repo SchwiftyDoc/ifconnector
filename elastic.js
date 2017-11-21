@@ -4,7 +4,7 @@ const http = require('http');
 exports.Elastic = class {
 
 
-    constructor(data, filename) {
+    constructor(data) {
 
         // Set data and HTTP Request options
         const options = {
@@ -23,9 +23,6 @@ exports.Elastic = class {
         const req = http.request(options, (res) => {
             res.on('error', (err) => {
                 console.error(err);
-            });
-            res.on('data', (chunk) => {
-                console.log('Elasticsearch saved iftop : ' + filename);
             });
         });
 

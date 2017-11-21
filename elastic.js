@@ -30,7 +30,7 @@ exports.Elastic = class {
         });
 
         req.write(data);
-        req.send();
+        req.end();
     }
 
 }

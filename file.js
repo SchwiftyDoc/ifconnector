@@ -4,13 +4,13 @@ const fs = require('fs');
 
 exports.File = class {
 
-    constructor(keep) {
+    constructor() {
         // Set date variables
         this.start = new Date();
         this.end = new Date(this.start.getTime() + (1000 * config.duration));
 
         // Set and check path
-        if (keep) {
+        if (config.data.keep) {
             this.path = this.getPathname();
             this.checkPath();
         } else {
@@ -23,7 +23,7 @@ exports.File = class {
         this.checkFile();
     }
 
-    getContent() {
+    getConnections() {
         let json;
         let results = { connections: [] };
 

@@ -29,7 +29,7 @@ exports.Datafile = class {
 
         console.log(this.file);
         //process.exit(0);
-        fs.readFileSync('/tmp/100421_100431.txt', (err, data) => {
+        fs.readFile('/tmp/100421_100431.txt', (err, data) => {
             if (err)
                 console.error('Unable to read file where data were saved : ' + this.file);
 

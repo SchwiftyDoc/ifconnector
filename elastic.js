@@ -7,7 +7,6 @@ exports.Elastic = class {
     constructor(data) {
 
         // Set data and HTTP Request options
-        this.data = data;
         const options = {
             host: config.elasticsearch.host,
             port: config.elasticsearch.port,
@@ -16,25 +15,22 @@ exports.Elastic = class {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=UTF-8",
-                "Content-Length": Buffer.byteLength(this.data)
+                "Content-Length": Buffer.byteLength(data)
             }
         };
 
         // Set request and handle answers
-        this.req = http.request(options, (res) => {
+        const req = http.request(options, (res) => {
             res.on('error', (err) => {
                 console.error(err);
             });
             res.on('data', (chunk) => {
-                console.log('Elasticsearch saved iftop : ' + this.data.file.getFilename());
+                console.log('Elasticsearch saved iftop : ' + data.file.getFilename());
             });
         });
-    }
 
-    send() {
-        this.req.write(this.data);
-        this.req.end();
+        req.write(data);
+        req.send();
     }
-
 
 }

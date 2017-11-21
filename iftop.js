@@ -13,11 +13,7 @@ exports.Iftop = class {
         this.execute.on('close', (code) => {
             if (code != 0)
                 console.error("Iftop: Error occured.");
-
-            this.datafile.getConnections();
-
-            if (!config.data.keep)
-                this.datafile.remove();
+            console.log(this.datafile.getConnections());
         });
     }
 

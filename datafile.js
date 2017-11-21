@@ -1,5 +1,6 @@
 // Imports
 const config = require('./config.json');
+const range = require('range_check');
 const fs = require('fs');
 
 class Datafile {
@@ -13,7 +14,7 @@ class Datafile {
         this.path = this.getPathname();
         this.checkPath();
 
-        // Set and check file
+        // Set and check file with(out) extension
         this.file = this.path + '/' + this.getFilename();
         this.file += (config.data.ext.length > 0) ? '.' + config.data.ext : '';
         this.checkFile();
@@ -24,8 +25,6 @@ class Datafile {
         let results = { connections: [] };
 
         let data = fs.readFileSync(this.file, 'utf-8');
-        /*console.log(data);
-        process.exit(0);*/
         const strr = data.toString().split('\n');
         for (let u = 3; u < 23; u += 2) {
             let str1 = strr[u].trim();
@@ -39,8 +38,9 @@ class Datafile {
                 'source': str1[1],
                 'destination': str2[0],
                 'bandwidth': str1[5],
-                'from': this.start.toISOString(),
-                'to': this.end.toISOString()
+                'start': this.start.toISOString(),
+                'end': this.end.toISOString(),
+                'direction': this.isIntern(str1[1]) ? 'outgoing': 'incoming'
             };
             results.connections.push(json);
 
@@ -48,17 +48,33 @@ class Datafile {
                 'source': str2[0],
                 'destination': str1[1],
                 'bandwidth': str2[4],
-                'from': this.start.toISOString(),
-                'to': this.end.toISOString()
+                'start': this.start.toISOString(),
+                'end': this.end.toISOString(),
+                'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming'
             };
             results.connections.push(json);
         }
-        console.log(results);
-        //const el = new Elastic(JSON.stringify(results)).send();
+
+        if (!config.data.keep)
+            this.remove();
+
+        return results;
+    }
+
+    isIntern(ip) {
+        let result = false;
+        config.iftop.networks.forEach((network) => {
+            if (range.inRange(ip, network))
+                result = true;
+        });
+        return result;
     }
 
     remove() {
-
+        fs.unlink(this.file, (err) => {
+            if (err)
+                console.error(err);
+        });
     }
 
     getPathname() {

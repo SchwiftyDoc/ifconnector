@@ -7,7 +7,7 @@ exports.Datafile = class {
     constructor() {
         // Set date variables
         this.start = new Date();
-        this.end = new Date(this.start.getTime() + (1000 * config.duration));
+        this.end = new Date(this.start.getTime() + (1000 * config.data.duration));
 
         // Set and check path
         if (config.data.keep) {
@@ -68,8 +68,8 @@ exports.Datafile = class {
     }
 
     getPathname() {
-        return config.data.path + '/' + this.start.getFullYear() + '-'
-            + (this.start.getMonth() + 1) + '-' + this.start.getDate();
+        return (config.data.keep) ? config.data.path + '/' + this.start.getFullYear() + '-'
+            + (this.start.getMonth() + 1) + '-' + this.start.getDate() : '/tmp';
     }
 
     getFilename() {

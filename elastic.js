@@ -21,7 +21,7 @@ exports.Elastic = class {
         };
 
         // Set request and handle answers
-        const req = http.request(options, (res) => {
+        this.req = http.request(options, (res) => {
             res.on('error', (err) => {
                 console.error(err);
             });

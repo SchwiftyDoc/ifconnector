@@ -10,7 +10,7 @@ exports.Iftop = class {
         this.connections = [];
         this.datafile = new Datafile();
         this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.datafile.filevim)
-        this.execute.on('close', this.close(code, this.datafile));
+        this.execute.on('close', (code) => { this.close(code, this.datafile) });
     }
 
     intern() {

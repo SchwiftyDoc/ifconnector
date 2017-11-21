@@ -24,6 +24,9 @@ exports.Elastic = class {
             res.on('error', (err) => {
                 console.error(err);
             });
+            res.on('data', (data) => {
+                console.log(data);
+            })
         });
 
         req.write(data);

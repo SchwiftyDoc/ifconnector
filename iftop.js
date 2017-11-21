@@ -9,22 +9,22 @@ exports.Iftop = class {
     constructor() {
         this.connections = [];
         this.datafile = new Datafile();
-        this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.datafile.filevim)
-        this.execute.on('close', (code) => { this.close(code, this.datafile) });
+        this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.datafile.file)
+        this.execute.on('close', close);
     }
 
     intern() {
 
     }
 
-    close(code, file) {
+    close(code) {
 
         if(code != 0) {
             console.error('iftop has stopped unexpectidly on code : ' + code);
             process.exit(code);
         }
 
-        console.log(file.getConnections());
+        console.log(this.datafile.getConnections());
         process.exit(0);
 
         // Send to Elastic search
@@ -32,7 +32,7 @@ exports.Iftop = class {
 
         // Delete raw data?
         if (!config.data.keep)
-            this.file.remove();
+            this.datafile.remove();
     }
 
 };

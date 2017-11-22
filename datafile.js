@@ -78,7 +78,7 @@ class Datafile {
             y = 1000000000
         }
 
-        return parseFloat(bandwidth) * y / config.iftop.duration;
+        return (parseFloat(bandwidth) * y) / config.iftop.duration;
     }
 
     isIntern(ip) {

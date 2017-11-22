@@ -63,25 +63,23 @@ class Datafile {
     }
 
     toBits(bandwidth) {
+        let y = 1;
         let x = bandwidth.search("Kb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000
+            y = 1000
         }
 
         x = bandwidth.search("Mb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000000
+            y = 1000000
         }
 
         x = bandwidth.search("Gb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000000000
+            y = 1000000000
         }
 
-        x = bandwidth.search("b");
-        if(x > -1) {
-            return parseFloat(bandwidth);
-        }
+        return parseFloat(bandwidth) * y / config.iftop.duration;
     }
 
     isIntern(ip) {

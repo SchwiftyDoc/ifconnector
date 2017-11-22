@@ -65,22 +65,22 @@ class Datafile {
     toBits(bandwidth) {
         let x = bandwidth.search("Kb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000 / config.iftop.duration
+            return parseFloat(bandwidth) * 1000
         }
 
         x = bandwidth.search("Mb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000000 / config.iftop.duration
+            return parseFloat(bandwidth) * 1000000
         }
 
         x = bandwidth.search("Gb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000000000 / config.iftop.duration
+            return parseFloat(bandwidth) * 1000000000
         }
 
         x = bandwidth.search("b");
         if(x > -1) {
-            return parseFloat(bandwidth) / config.iftop.duration;
+            return parseFloat(bandwidth);
         }
     }
 

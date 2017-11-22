@@ -14,4 +14,5 @@ if(![2, 10, 40].includes(config.iftop.duration)) {
     process.exit(2);
 }
 
+console.log('IfConnector started to configure check : ' + __dirname + '/config.json');
 setInterval(fct, config.iftop.duration * 1000);

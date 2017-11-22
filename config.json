@@ -10,7 +10,7 @@
     "duration": 10
   },
   "data": {
-    "path" : "/opt/iftop/data",
+    "path" : "/opt/ifconnector/data",
     "keep" : true,
     "ext" : "txt"
   },

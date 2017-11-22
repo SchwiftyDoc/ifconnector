@@ -25,7 +25,7 @@ exports.Elastic = class {
                 console.error(err);
             });
             res.on('data', (data) => {
-                console.log(data.toString());
+                //console.log(data.toString());
             })
         });
 

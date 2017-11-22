@@ -37,7 +37,7 @@ class Datafile {
             json = {
                 'source': str1[1],
                 'destination': str2[0],
-                'bandwidth': this.toBits(str1[6]) / config.iftop.duration,
+                'bandwidth': parseFloat(this.toBits(str1[6])) / config.iftop.duration,
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str1[1]) ? 'outgoing': 'incoming'
@@ -47,7 +47,7 @@ class Datafile {
             json = {
                 'source': str2[0],
                 'destination': str1[1],
-                'bandwidth': this.toBits(str2[5]) / config.iftop.duration,
+                'bandwidth': parseFloat(this.toBits(str2[5])) / config.iftop.duration,
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming'

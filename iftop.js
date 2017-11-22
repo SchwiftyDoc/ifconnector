@@ -9,12 +9,12 @@ exports.Iftop = class {
     constructor() {
         this.connections = [];
         this.datafile = new Datafile();
-        this.execute = child.spawn('iftop', ['-i', config.iftop.interface,
-                                            '-t', '-n', '-s', config.iftop.duration, '>', this.datafile.file]);
-        //this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.datafile.file);
+        /*this.execute = child.spawn('iftop', ['-i', config.iftop.interface,
+                                            '-t', '-n', '-s', config.iftop.duration, '>', this.datafile.file])*/
+        this.execute = child.exec('iftop -i ' + config.iftop.interface + ' -t -n -s ' + config.iftop.duration + ' > ' + this.datafile.file);
         this.execute.on('close', (code) => {
-            if (code != 0)
-                console.error("Iftop: Error occured.");
+            /*if (code != 0)
+                console.error("Iftop: Error occured.");*/
             let elastic;
             const data = this.datafile.getConnections();
             data.connections.forEach((conn) => {

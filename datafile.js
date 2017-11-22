@@ -34,11 +34,10 @@ class Datafile {
             str2 = str2.replace(/\s\s+/g, ' ');
             str2 = str2.split(' ');
 
-            console.log(this.toBits(str1[6]));
             json = {
                 'source': str1[1],
                 'destination': str2[0],
-                'bandwidth': this.toBits(str1[6]),
+                'bandwidth': this.toBits(str1[5]),
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str1[1]) ? 'outgoing': 'incoming'
@@ -48,7 +47,7 @@ class Datafile {
             json = {
                 'source': str2[0],
                 'destination': str1[1],
-                'bandwidth': this.toBits(str2[5]),
+                'bandwidth': this.toBits(str2[4]),
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming'

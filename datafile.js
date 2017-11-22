@@ -62,12 +62,7 @@ class Datafile {
     }
 
     toBits(bandwidth) {
-        let x = bandwidth.search("b");
-        if(x > -1) {
-            return parseFloat(bandwidth);
-        }
-
-        x = bandwidth.search("Kb");
+        let x = bandwidth.search("Kb");
         if (x > -1) {
             return parseFloat(bandwidth) * 1000
         }
@@ -80,6 +75,11 @@ class Datafile {
         x = bandwidth.search("Gb");
         if (x > -1) {
             return parseFloat(bandwidth) * 1000000000
+        }
+
+        x = bandwidth.search("b");
+        if(x > -1) {
+            return parseFloat(bandwidth);
         }
     }
 

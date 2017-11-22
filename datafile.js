@@ -34,6 +34,7 @@ class Datafile {
             str2 = str2.replace(/\s\s+/g, ' ');
             str2 = str2.split(' ');
 
+
             json = {
                 'source': str1[1],
                 'destination': str2[0],

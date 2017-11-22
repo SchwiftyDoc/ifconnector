@@ -37,7 +37,7 @@ class Datafile {
             json = {
                 'source': str1[1],
                 'destination': str2[0],
-                'bandwidth': parseFloat(this.toBits(str1[6])) / config.iftop.duration,
+                'bandwidth': this.toBits(str1[6]),
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str1[1]) ? 'outgoing': 'incoming'
@@ -47,7 +47,7 @@ class Datafile {
             json = {
                 'source': str2[0],
                 'destination': str1[1],
-                'bandwidth': parseFloat(this.toBits(str2[5])) / config.iftop.duration,
+                'bandwidth': this.toBits(str2[5]),
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming'
@@ -62,25 +62,24 @@ class Datafile {
     }
 
     toBits(bandwidth) {
+        let y;
         let x = bandwidth.search("Kb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000
+            y = 1000
         }
 
         x = bandwidth.search("Mb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000000
+            y = 1000000
         }
 
         x = bandwidth.search("Gb");
         if (x > -1) {
-            return parseFloat(bandwidth) * 1000000000
+            y = 1000000000
         }
 
-        x = bandwidth.search("b");
-        if(x > -1) {
-            return parseFloat(bandwidth);
-        }
+        console.log(parseFloat(bandwidth) * y);
+        return parseFloat(bandwidth) * y;
     }
 
     isIntern(ip) {

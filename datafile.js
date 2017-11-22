@@ -62,25 +62,25 @@ class Datafile {
     }
 
     toBits(bandwidth) {
-        let y = 1;
         let x = bandwidth.search("Kb");
         if (x > -1) {
-            y = 1000
+            return parseFloat(bandwidth) * 1000 / config.iftop.duration
         }
 
         x = bandwidth.search("Mb");
         if (x > -1) {
-            y = 1000000
+            return parseFloat(bandwidth) * 1000000 / config.iftop.duration
         }
 
         x = bandwidth.search("Gb");
         if (x > -1) {
-            y = 1000000000
+            return parseFloat(bandwidth) * 1000000000 / config.iftop.duration
         }
 
-        console.log(parseFloat(bandwidth));
-        console.log('y = ' + y);
-        return parseFloat(bandwidth) * y;
+        x = bandwidth.search("b");
+        if(x > -1) {
+            return parseFloat(bandwidth) / config.iftop.duration;
+        }
     }
 
     isIntern(ip) {

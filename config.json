@@ -7,7 +7,7 @@
       "185.69.216.0/22",
       "84.254.96.0/19"
     ],
-    "onlynetworks": true,
+    "onlynetworks": false,
     "duration": 10
   },
   "data": {

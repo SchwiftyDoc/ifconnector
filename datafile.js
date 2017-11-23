@@ -38,7 +38,7 @@ class Datafile {
                 'source': str1[1],
                 'destination': str2[0],
                 'bandwidth': this.toBits(str1[5]),
-                'start': this.start.toISOString(),
+                'date': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str1[1]) ? 'outgoing': 'incoming',
                 'network': this.getNetwork(str1[1], str2[0])
@@ -50,7 +50,7 @@ class Datafile {
                 'source': str2[0],
                 'destination': str1[1],
                 'bandwidth': this.toBits(str2[4]),
-                'start': this.start.toISOString(),
+                'date': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming',
                 'network': this.getNetwork(str1[1], str2[0])

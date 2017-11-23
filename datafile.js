@@ -43,7 +43,8 @@ class Datafile {
                 'direction': this.isIntern(str1[1]) ? 'outgoing': 'incoming',
                 'network': this.getNetwork(str1[1], str2[0])
             };
-            results.connections.push(json);
+            if (json.network)
+                results.connections.push(json);
 
             json = {
                 'source': str2[0],
@@ -54,7 +55,8 @@ class Datafile {
                 'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming',
                 'network': this.getNetwork(str1[1], str2[0])
             };
-            results.connections.push(json);
+            if (json.network)
+                results.connections.push(json);
         }
 
         if (!config.data.keep)
@@ -84,7 +86,7 @@ class Datafile {
     }
 
     getNetwork(ip1, ip2) {
-        let result;
+        let result = false;
         config.iftop.networks.forEach((network) => {
             if (range.inRange(ip1, network))
                 result = network;

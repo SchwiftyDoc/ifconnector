@@ -12,8 +12,7 @@
   "data": {
     "path": "/opt/ifconnector/data",
     "keep": true,
-    "ext": "txt",
-    "byte": true
+    "ext": "txt"
   },
   "elasticsearch": {
     "host": "172.19.0.27",

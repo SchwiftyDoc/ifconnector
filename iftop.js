@@ -9,6 +9,8 @@ exports.Iftop = class {
     constructor() {
         this.connections = [];
         this.datafile = new Datafile();
+        console.log('/usr/sbin/iftop -i ' + config.iftop.interface + ' -t '
+            + (config.data.byte) ? '-B ':'' + '-n -s ' + config.iftop.duration + ' > ' + this.datafile.file);
         this.execute = child.exec('/usr/sbin/iftop -i ' + config.iftop.interface + ' -t '
             + (config.data.byte) ? '-B ':'' + '-n -s ' + config.iftop.duration + ' > ' + this.datafile.file);
         this.execute.on('close', (code) => {

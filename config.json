@@ -1,6 +1,6 @@
 {
   "iftop": {
-    "interface" : "ens160",
+    "interface": "ens160",
     "networks": [
       "195.137.228.0/23",
       "212.24.192.0/19",
@@ -10,14 +10,15 @@
     "duration": 10
   },
   "data": {
-    "path" : "/opt/ifconnector/data",
-    "keep" : true,
-    "ext" : "txt"
+    "path": "/opt/ifconnector/data",
+    "keep": true,
+    "ext": "txt",
+    "byte": true
   },
   "elasticsearch": {
     "host": "172.19.0.27",
     "port": 9200,
-    "index": "test2",
+    "index": "test3",
     "type": "iftop"
   }
 }

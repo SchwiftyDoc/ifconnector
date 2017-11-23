@@ -34,7 +34,6 @@ class Datafile {
             str2 = str2.replace(/\s\s+/g, ' ');
             str2 = str2.split(' ');
 
-
             json = {
                 'source': str1[1],
                 'destination': str2[0],
@@ -53,7 +52,7 @@ class Datafile {
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
                 'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming',
-                'network': this.getNetwork(str2[0], str1[1])
+                'network': this.getNetwork(str1[1], str2[0])
             };
             results.connections.push(json);
         }

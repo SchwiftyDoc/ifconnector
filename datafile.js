@@ -41,7 +41,8 @@ class Datafile {
                 'bandwidth': this.toBits(str1[5]),
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
-                'direction': this.isIntern(str1[1]) ? 'outgoing': 'incoming'
+                'direction': this.isIntern(str1[1]) ? 'outgoing': 'incoming',
+                'network': this.getNetwork(str1[1], str2[0])
             };
             results.connections.push(json);
 
@@ -51,7 +52,8 @@ class Datafile {
                 'bandwidth': this.toBits(str2[4]),
                 'start': this.start.toISOString(),
                 'end': this.end.toISOString(),
-                'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming'
+                'direction': this.isIntern(str2[0]) ? 'outgoing': 'incoming',
+                'network': this.getNetwork(str2[0], str1[1])
             };
             results.connections.push(json);
         }
@@ -80,6 +82,17 @@ class Datafile {
         }
 
         return parseFloat(bandwidth) * y / config.iftop.duration;
+    }
+
+    getNetwork(ip1, ip2) {
+        let result;
+        config.iftop.networks.forEach((network) => {
+            if (range.inRange(ip1, network))
+                result = network;
+            else if (range.inRange(ip2, network))
+                result = network;
+        });
+        return result;
     }
 
     isIntern(ip) {

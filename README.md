@@ -1,4 +1,4 @@
-# Ifconnector
+# Ifconnector v1.0
 IfConnector - Iftop to Elasticsearch
 
 This program is developped in NodeJS for the purpose to store informations
@@ -16,7 +16,7 @@ Company: Telkea
 * elastc.js: Class that handles connections to the Elasticsearch server.
 * iftop.js: Class that launches the process and handle his closure.
 
-## Configuration file options : ./config.json
+## Configuration file options :
 
 ### Iftop
 
@@ -25,7 +25,7 @@ All the configuration about the iftop process
 * interface: Interface that Iftop will listen to.
 * networks: Array of networks written with the common writing _x.x.x.x/y_.
 * onlynetworks: Boolean if put on true only the data from the networks defined will be send to Elasticsearch
-* duration: 2, 10 or 40 is the time iftop process will run before stopping and written the file.
+* duration: _2, 10 or 40_ is the time iftop process will run before stopping and write the file.
 
 ### Data
 

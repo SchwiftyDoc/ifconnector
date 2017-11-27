@@ -4,7 +4,6 @@ const child = require('child_process');
 const { Elastic } = require('./elastic');
 const { Datafile } = require('./datafile');
 
-
 exports.Iftop = class {
 
     constructor() {

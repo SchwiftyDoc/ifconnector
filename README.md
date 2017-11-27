@@ -1,6 +1,12 @@
 # Ifconnector
 IfConnector - Iftop to Elasticsearch
 
+This program is developped in NodeJS for the purpose to store informations
+created by an Iftop process to an Elasticsearch Server.
+
+Author: Corentin Dekimpe
+Company: Telkea
+
 ## File structure :
 
 * app.js: Entry point of the application, will just check if no fatal error in the configuration file.

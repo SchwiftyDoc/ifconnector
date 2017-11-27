@@ -8,6 +8,47 @@ Author: Corentin Dekimpe
 
 Company: Telkea
 
+## Installation :
+
+Clone the Git repository in the /opt directory with the command:
+
+```
+cd /opt
+git clone https://github.com/SchwiftyDoc/telkea_ifconnector.git
+mv telkea_ifconnector ifconnector
+cd ifconnector
+npm install
+```
+
+Create a service file in _/etc/systemd/system/ifconnector.service with the following content:
+
+```
+[Unit]
+Description=IfConnector - Iftop to Elasticsearch
+
+[Service]
+ExecStart=/usr/bin/node /opt/ifconnector/app.js
+Restart=always
+User=root
+Group=root
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/opt/ifconnector/
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then you have access to the program like any other service with the following commands:
+
+```
+systemctl enable ifconnector
+systemctl (re)start ifconnector
+systemctl status ifconnector
+systemctl stop ifconnector
+journalctl -xeu ifconnector
+```
+
 ## File structure :
 
 * app.js: Entry point of the application, will just check if no fatal error in the configuration file.

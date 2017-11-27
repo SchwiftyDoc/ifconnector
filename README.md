@@ -5,6 +5,7 @@ This program is developped in NodeJS for the purpose to store informations
 created by an Iftop process to an Elasticsearch Server.
 
 Author: Corentin Dekimpe
+
 Company: Telkea
 
 ## File structure :

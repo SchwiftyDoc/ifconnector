@@ -1,7 +1,15 @@
-# ifconnector
+# Ifconnector
 IfConnector - Iftop to Elasticsearch
 
-## Configuration file set up:
+## File structure :
+
+* app.js: Entry point of the application, will just check if no fatal error in the configuration file.
+* config.json: Configruation file to parameter. Check options lower in this file.
+* datafile.js: Class that handles all the methods to deal with files created by Iftop.
+* elastc.js: Class that handles connections to the Elasticsearch server.
+* iftop.js: Class that launches the process and handle his closure.
+
+## Configuration file options : ./config.json
 
 ### Iftop
 
